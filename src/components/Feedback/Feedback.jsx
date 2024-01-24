@@ -1,5 +1,7 @@
-import { Component } from 'react';
+import { Children, Component } from 'react';
 import React from 'react';
+import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
+import Section from 'components/Section/Section';
 
 class Feedback extends Component {
   state = {
@@ -9,47 +11,27 @@ class Feedback extends Component {
   };
 
   render() {
-    const Section = ({ title, children }) => {
+    const Statistics = ({ title, good, neutral, bad }) => {
       return (
-        <section>
+        <div>
           <h2>{title}</h2>
-          {children}
-        </section>
+          <p>Good: {good}</p>
+          <p>Neutral: {neutral}</p>
+          <p>Bad: {bad}</p>
+        </div>
       );
     };
 
-    // const options = Object.keys(this.state);
-    // console.log(options);
-    
-    const FeedbackOptions = ({ options }) => {
-      return (<div>
-        <div>
-   
-         {options.map(option => (
-       
-          <button type="button" key={option}>
-            {option}
-          </button>
-        )
-      )}</div>
-
- </div>)
-    };
-
-
-
-
-console.log(FeedbackOptions)
     return (
       <div>
-        <h1>Please leave feedback</h1>
         <Section title="Please leave feedback">
           <FeedbackOptions options={Object.keys(this.state)} />
         </Section>
+        <Statistics title="Statistics" {...this.state} ></Statistics>
       </div>
     );
   }
 }
 
 export default Feedback;
-// 
+//
