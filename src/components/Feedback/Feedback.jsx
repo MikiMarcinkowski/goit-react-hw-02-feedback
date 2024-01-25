@@ -15,8 +15,8 @@ class Feedback extends Component {
   
 
   onLeaveFeedback = option => {
-    this.setState(pomidor => ({
-      [option]: pomidor[option] + 1,
+    this.setState(prevState => ({
+      [option]: prevState[option] + 1,
     }));
   };
 
